@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <meta charset="UTF-8">
+    <title>CarryIt</title>
+    <link rel="stylesheet" th:href="@{/css/CarryIt.css}">
+  </head>
+  <body onload="init()">
+    <canvas id="soko" width="800" height="440"></canvas>
+<table>
+    <tr><td></td><td><button onclick="moveUp()">▲</button></td><td></td></tr>
+    <tr><td><button onclick="moveLeft()">＜</button></td><td></td>
+        <td><button onclick="moveRight()">＞</button></td></tr>
+    <tr><td></td><td><button onclick="moveDown()">▼</button></td><td></td></tr>
+</table>
+    <img id="imgWall" th:src="@{/img/imgWall.png}">
+    <img id="imgGoal" th:src="@{/img/imgGoal.png}">
+    <img id="imgWorker" th:src="@{/img/imgWorker.png}">
+    <img id="imgLuggage" th:src="@{/img/imgLuggage.png}">
+    <script th:src="@{/js/CarryIt.js}"></script>
+  </body>
+</html>
