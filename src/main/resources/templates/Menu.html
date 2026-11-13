@@ -4,20 +4,108 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Menu</title>
+  <title>Game Menu</title>
+  <link rel="stylesheet" th:href="@{/css/Menu.css}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-  <form>
-    <a th:href="@{/games/flipCards}">FlipCards</a>
-    <input type="hidden" value="id1">
-  </form>
-  <form>
-    <a th:href="@{/games/swapPuzzle}">SwapPuzzle</a>
-    <input type="hidden" value="id2">
-  </form>
-    <form>
-    <a th:href="@{/games/carryIt}">CarryIt</a>
-    <input type="hidden" value="id2">
-  </form>
+<body class="bg-secondary">
+  <!-- ナビバー -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      
+      <!-- 左側タイトル -->
+      <h1 class="navbar-brand">
+        Choi Games
+      </h1>
+      
+      <!-- スマホ用メニューボタン -->
+      <button class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarMenu"
+              aria-controls="navbarMenu"
+              aria-expanded="false"
+              aria-label="メニューを開く">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- ナビゲーションメニュー -->
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        
+        <!-- 中央メニュー -->
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+              <a class="nav-link active" href="#">ホーム</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">スコア</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">ツイート</a>
+          </li>
+        </ul>
+
+        <!-- 右側メニュー -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#">プロフィール</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">ログアウト</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <h2>ようこそ、太郎さん！</h2>
+
+    <!-- ゲーム一覧 -->
+    <section class="gallery" id="gallery">
+      <div class="gallery-item">
+        <form th:action="@{/games/flipCards}" method="get" id="flipCardsForm">
+          <input type="hidden" name="id" value="1">
+          <img th:src="@{/img/flipCards.jpg}" alt="flipCards" onclick="document.getElementById('flipCardsForm').submit()">
+        </form>
+      </div>
+
+      <div class="gallery-item">
+        <form th:action="@{/games/swapPuzzle}" method="get" id="swapPuzzleForm">
+          <input type="hidden" name="id" value="2">
+          <img th:src="@{/img/swapPuzzle.jpg}" alt="swapPuzzle" onclick="document.getElementById('swapPuzzleForm').submit()">
+        </form>
+      </div>
+
+      <div class="gallery-item">
+        <form th:action="@{/games/carryIt}" method="get" id="carryItForm">
+          <input type="hidden" name="id" value="3">
+          <img th:src="@{/img/carryIt.jpg}" alt="carryIt" onclick="document.getElementById('carryItForm').submit()">
+        </form>
+      </div>
+
+      <div class="gallery-item">
+        <form th:action="@{/games/carryIt}" method="get" id="TBDForm">
+          <input type="hidden" name="id" value="3">
+          <img th:src="@{/img/TBD.jpg}" alt="coming soon" onclick="document.getElementById('TBDForm').submit()">
+        </form>
+      </div>
+
+      <div class="gallery-item">
+        <form th:action="@{/games/carryIt}" method="get" id="TBDForm">
+          <input type="hidden" name="id" value="3">
+          <img th:src="@{/img/TBD.jpg}" alt="coming soon" onclick="document.getElementById('TBDForm').submit()">
+        </form>
+      </div>
+
+      <div class="gallery-item">
+        <form th:action="@{/games/carryIt}" method="get" id="TBDForm">
+          <input type="hidden" name="id" value="3">
+          <img th:src="@{/img/TBD.jpg}" alt="coming soon" onclick="document.getElementById('TBDForm').submit()">
+        </form>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
