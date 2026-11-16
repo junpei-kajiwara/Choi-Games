@@ -59,51 +59,41 @@
   </nav>
 
   <main class="container">
-
-    <h2>ようこそ、太郎さん！</h2>
-
+    <div th:if="${session.userData}">
+      <h2>ようこそ、<span th:text="${session.userData.userName}"></span>さん！</h2>
+    </div>
+    
     <!-- ゲーム一覧 -->
+
+    <!-- フォーム -->
+    <form th:action="@{/games/flipCards}" method="get" id="flipCardsForm" th:object="${userForm}"></form>
+    <form th:action="@{/games/swapPuzzle}" method="get" id="swapPuzzleForm" th:object="${userForm}"></form>
+    <form th:action="@{/games/carryIt}" method="get" id="carryItForm" th:object="${userForm}"></form>
+
+    <!-- アイコン -->
     <section class="gallery" id="gallery">
       <div class="gallery-item">
-        <form th:action="@{/games/flipCards}" method="get" id="flipCardsForm">
-          <input type="hidden" name="id" value="1">
-          <img th:src="@{/img/flipCards.jpg}" alt="flipCards" onclick="document.getElementById('flipCardsForm').submit()">
-        </form>
+        <img th:src="@{/img/flipCards.jpg}" alt="flipCards" onclick="document.getElementById('flipCardsForm').submit()">
       </div>
 
       <div class="gallery-item">
-        <form th:action="@{/games/swapPuzzle}" method="get" id="swapPuzzleForm">
-          <input type="hidden" name="id" value="2">
-          <img th:src="@{/img/swapPuzzle.jpg}" alt="swapPuzzle" onclick="document.getElementById('swapPuzzleForm').submit()">
-        </form>
+        <img th:src="@{/img/swapPuzzle.jpg}" alt="swapPuzzle" onclick="document.getElementById('swapPuzzleForm').submit()">
       </div>
 
       <div class="gallery-item">
-        <form th:action="@{/games/carryIt}" method="get" id="carryItForm">
-          <input type="hidden" name="id" value="3">
-          <img th:src="@{/img/carryIt.jpg}" alt="carryIt" onclick="document.getElementById('carryItForm').submit()">
-        </form>
+        <img th:src="@{/img/carryIt.jpg}" alt="carryIt" onclick="document.getElementById('carryItForm').submit()">
       </div>
 
       <div class="gallery-item">
-        <form th:action="@{/games/carryIt}" method="get" id="TBDForm">
-          <input type="hidden" name="id" value="3">
-          <img th:src="@{/img/TBD.jpg}" alt="coming soon" onclick="document.getElementById('TBDForm').submit()">
-        </form>
+        <img th:src="@{/img/TBD.jpg}" alt="coming soon" onclick="document.getElementById('TBDForm').submit()">
       </div>
 
       <div class="gallery-item">
-        <form th:action="@{/games/carryIt}" method="get" id="TBDForm">
-          <input type="hidden" name="id" value="3">
-          <img th:src="@{/img/TBD.jpg}" alt="coming soon" onclick="document.getElementById('TBDForm').submit()">
-        </form>
+        <img th:src="@{/img/TBD.jpg}" alt="coming soon" onclick="document.getElementById('TBDForm').submit()">
       </div>
 
       <div class="gallery-item">
-        <form th:action="@{/games/carryIt}" method="get" id="TBDForm">
-          <input type="hidden" name="id" value="3">
-          <img th:src="@{/img/TBD.jpg}" alt="coming soon" onclick="document.getElementById('TBDForm').submit()">
-        </form>
+        <img th:src="@{/img/TBD.jpg}" alt="coming soon" onclick="document.getElementById('TBDForm').submit()">
       </div>
     </section>
   </main>
