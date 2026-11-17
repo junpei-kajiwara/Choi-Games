@@ -49,7 +49,7 @@ public class SecurityConfig {
 
         // ログイン設定
         .formLogin(form -> form.loginPage("/login").loginProcessingUrl("/login").usernameParameter("email")
-            .passwordParameter("password").defaultSuccessUrl("/home", true).failureUrl("/login?error").permitAll())
+            .passwordParameter("password").defaultSuccessUrl("/home/init", true).failureUrl("/login?error").permitAll())
 
         // ログアウト設定
         .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login?logout").invalidateHttpSession(true)

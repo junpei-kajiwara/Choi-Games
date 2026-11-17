@@ -13,7 +13,13 @@ import jakarta.servlet.http.HttpSession;
 @RequestMapping("/home")
 public class HomeController {
 
-  @GetMapping
+  /**
+   * ホーム（ゲームメニュー）画面への遷移
+   * 
+   * @param session
+   * @return ModelAndView
+   */
+  @GetMapping("/init")
   public ModelAndView openGameMenu(HttpSession session) {
     ModelAndView mv = new ModelAndView();
     UserForm userForm = new UserForm();
