@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<body>
+		<!-- ナビバー -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" th:fragment="navbar">
+			<div class="container-fluid">
+				
+				<!-- 左側タイトル -->
+				<h1 class="navbar-brand">
+					Choi Games
+				</h1>
+				
+				<!-- スマホ用メニューボタン -->
+				<button class="navbar-toggler"
+								type="button"
+								data-bs-toggle="collapse"
+								data-bs-target="#navbarMenu"
+								aria-controls="navbarMenu"
+								aria-expanded="false"
+								aria-label="メニューを開く">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<!-- ナビゲーションメニュー -->
+				<div class="collapse navbar-collapse" id="navbarMenu">
+					
+					<!-- 中央メニュー -->
+					<ul class="navbar-nav mx-auto">
+						<li class="nav-item">
+							<a class="nav-link active" href="#">ホーム</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">スコア</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">ツイート</a>
+						</li>
+					</ul>
+
+					<!-- 右側メニュー -->
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="#">プロフィール</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">ログアウト</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</body>
+</html>
