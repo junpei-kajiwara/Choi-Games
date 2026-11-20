@@ -10,7 +10,7 @@
   </head>
   <body>
     <!-- ナビバー -->
-    <div th:replace="~{common/Navbar :: navbar}"></div>
+    <div th:replace="~{common/Navbar :: navbar('login')}"></div>
     <div class="login-container">
 
       <h2>ログイン</h2>
@@ -46,7 +46,7 @@
           >
         </div>
         <button type="submit">
-            ログイン
+          ログイン
         </button>
       </form>
     </div>
