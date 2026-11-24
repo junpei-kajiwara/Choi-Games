@@ -1,0 +1,12 @@
+/* 全体 */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif, Arial;
+  background: #f2f2f2;
+  color: #262626;
+  padding-top: 56px;
+}
