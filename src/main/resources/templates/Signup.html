@@ -17,9 +17,7 @@
       <h2>サインアップ</h2>
 
       <!-- エラーメッセージ -->
-      <div th:if="${param.error}" class="error">
-        メールアドレスまたはパスワードが違います。
-      </div>
+      <div th:if="${errorMessage}" th:text="${errorMessage}" class="error"></div>
 
       <!-- サインアップフォーム -->
       <form th:action="@{/signup}" method="post">

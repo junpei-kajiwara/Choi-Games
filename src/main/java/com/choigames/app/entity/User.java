@@ -1,5 +1,7 @@
 package com.choigames.app.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,9 +29,9 @@ public class User {
   private String password;
 
   @Column
-  private String createdAt;
+  private LocalDateTime createdAt;
 
   @Column
-  private String updatedAt;
+  private LocalDateTime updatedAt;
 
 }
