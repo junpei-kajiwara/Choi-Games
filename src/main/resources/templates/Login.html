@@ -26,6 +26,11 @@
         ログアウトしました。
       </div>
 
+      <!-- サインアップ成功時 -->
+      <div th:if="${param.signup}" class="success">
+        サインアップが完了しました。
+      </div>
+
       <!-- ログインフォーム -->
       <form th:action="@{/login}" method="post">
         <div>

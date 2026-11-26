@@ -15,13 +15,17 @@ public class SecurityConfig {
   /**
    * パスワードエンコーダー
    * 
-   * @return
+   * @return エンコードしたパスワード
    */
   @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
 
+  /**
+   * セキュリティ処理の定義
+   * 
+   */
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http
@@ -35,8 +39,11 @@ public class SecurityConfig {
         // URLごとのアクセス制御
         .authorizeHttpRequests(auth -> auth
 
-            // ログイン画面
+            // ログイン画面またはサインアップ画面
             .requestMatchers("/login").permitAll()
+
+            // サインアップ画面
+            .requestMatchers("/signup").permitAll()
 
             // H2コンソール
             .requestMatchers("/h2-console/**").permitAll()
