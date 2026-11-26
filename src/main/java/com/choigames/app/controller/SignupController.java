@@ -26,7 +26,7 @@ public class SignupController {
    */
   @PostMapping
   public String doSignup() {
-    // サインアップ処理
+    // TODO サインアップ処理
     return "redirect:/login?signup";
   }
 

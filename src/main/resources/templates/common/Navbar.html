@@ -25,10 +25,10 @@
 				</button>
 
 				<!-- ナビゲーションメニュー -->
-				<div class="collapse navbar-collapse" id="navbarMenu" th:if="${menuType != 'login'}">
+				<div class="collapse navbar-collapse" id="navbarMenu">
 					
 					<!-- 中央メニュー -->
-					<ul class="navbar-nav mx-auto">
+					<ul class="navbar-nav mx-auto" th:if="${menuType != 'login' && menuType != 'signup'}">
 						<li class="nav-item">
 							<a class="nav-link active" href="#">ホーム</a>
 						</li>
@@ -41,14 +41,37 @@
 					</ul>
 
 					<!-- 右側メニュー -->
-					<ul class="navbar-nav">
+					<!-- ログイン画面用のメニュー -->
+					<ul class="navbar-nav ms-auto" th:if="${menuType == 'login'}">
+						<li class="nav-item">
+							<form th:action="@{/signup}">
+								<button type="submit" class="nav-link border-0 bg-transparent">
+									サインアップ
+								</button>
+							</form>
+						</li>
+					</ul>
+
+					<!-- サインアップ画面用のメニュー -->
+					<ul class="navbar-nav ms-auto" th:if="${menuType == 'signup'}">
+						<li class="nav-item">
+							<form th:action="@{/login}">
+								<button type="submit" class="nav-link border-0 bg-transparent">
+									ログイン
+								</button>
+							</form>
+						</li>
+					</ul>
+
+					<!-- ログイン/サインアップ画面以外用のメニュー -->
+					<ul class="navbar-nav" th:if="${menuType != 'login' && menuType != 'signup'}">
 						<li class="nav-item">
 							<a class="nav-link" href="#">プロフィール</a>
 						</li>
 						<li class="nav-item">
 							<form th:action="@{/logout}" method="post">
 								<button type="submit" class="nav-link border-0 bg-transparent">
-										ログアウト
+									ログアウト
 								</button>
 							</form>
 						</li>
