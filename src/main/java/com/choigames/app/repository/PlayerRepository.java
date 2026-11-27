@@ -4,11 +4,11 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.choigames.app.entity.User;
+import com.choigames.app.entity.Player;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface PlayerRepository extends JpaRepository<Player, Long> {
 
-  Optional<User> findByEmail(String email);
+  Optional<Player> findByEmail(String email);
 
   boolean existsByEmail(String email);
 

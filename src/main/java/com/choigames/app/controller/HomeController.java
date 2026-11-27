@@ -22,6 +22,8 @@ public class HomeController {
   @GetMapping("/init")
   public ModelAndView openGameMenu(HttpSession session) {
     ModelAndView mv = new ModelAndView();
+
+    // テスト用 TODO
     UserForm userForm = new UserForm();
     userForm.setUserName("太郎");
 

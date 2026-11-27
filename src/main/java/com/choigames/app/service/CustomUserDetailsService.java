@@ -1,32 +1,33 @@
 package com.choigames.app.service;
 
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.choigames.app.entity.User;
-import com.choigames.app.repository.UserRepository;
+import com.choigames.app.entity.Player;
+import com.choigames.app.repository.PlayerRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-  private final UserRepository userRepository;
+  private final PlayerRepository playerRepository;
 
-  public CustomUserDetailsService(UserRepository userRepository) {
-    this.userRepository = userRepository;
+  public CustomUserDetailsService(PlayerRepository playerRepository) {
+    this.playerRepository = playerRepository;
   }
 
   /**
-   * emailによるユーザー検索
+   * emailによるプレイヤー検索
    */
   @Override
   public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-    User user = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("ユーザーが存在しません"));
+    Player player = playerRepository.findByEmail(email)
+        .orElseThrow(() -> new UsernameNotFoundException("プレイヤーが存在しません"));
 
-    return org.springframework.security.core.userdetails.User.withUsername(user.getEmail()).password(user.getPassword())
-        .build();
+    return User.withUsername(player.getEmail()).password(player.getPassword()).build();
   }
 
 }

@@ -6,10 +6,10 @@ import java.time.LocalDateTime;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.choigames.app.entity.User;
+import com.choigames.app.entity.Player;
 import com.choigames.app.exception.DuplicateEmailException;
 import com.choigames.app.form.SignupForm;
-import com.choigames.app.repository.UserRepository;
+import com.choigames.app.repository.PlayerRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class SignupService {
 
-  private final UserRepository userRepository;
+  private final PlayerRepository playerRepository;
 
   private final Clock clock;
 
@@ -30,7 +30,7 @@ public class SignupService {
   public void registerAccount(SignupForm form) {
 
     // メールアドレスの重複チェック
-    if (userRepository.existsByEmail(form.getEmail())) {
+    if (playerRepository.existsByEmail(form.getEmail())) {
       throw new DuplicateEmailException();
     }
 
@@ -38,15 +38,15 @@ public class SignupService {
     BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     // 登録エンティティ設定
-    User user = new User();
-    user.setEmail(form.getEmail());
-    user.setPassword(encoder.encode(form.getPassword()));
-    user.setUserName(form.getUserName());
-    user.setCreatedAt(LocalDateTime.now(clock));
-    user.setUpdatedAt(LocalDateTime.now(clock));
+    Player player = new Player();
+    player.setEmail(form.getEmail());
+    player.setPassword(encoder.encode(form.getPassword()));
+    player.setPlayerName(form.getPlayerName());
+    player.setCreatedAt(LocalDateTime.now(clock));
+    player.setUpdatedAt(LocalDateTime.now(clock));
 
     // DB登録
-    userRepository.save(user);
+    playerRepository.save(player);
   }
 
 }

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.choigames.app.exception.DuplicateEmailException;
 import com.choigames.app.form.SignupForm;
 import com.choigames.app.service.SignupService;
 
@@ -38,7 +37,7 @@ public class SignupController {
     try {
       service.registerAccount(form);
       return "redirect:/login?signup";
-    } catch (DuplicateEmailException e) {
+    } catch (RuntimeException e) {
       redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
       return "redirect:/signup";
     }

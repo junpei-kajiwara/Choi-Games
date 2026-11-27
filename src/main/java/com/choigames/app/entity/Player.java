@@ -12,15 +12,15 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "users")
-public class User {
+@Table(name = "players")
+public class Player {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long userId;
+  private Long playerId;
 
   @Column(nullable = false)
-  private String userName;
+  private String playerName;
 
   @Column(nullable = false, unique = true)
   private String email;

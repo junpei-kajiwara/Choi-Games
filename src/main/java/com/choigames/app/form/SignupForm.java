@@ -11,6 +11,6 @@ public class SignupForm {
 
   private String confirmPassword;
 
-  private String userName;
+  private String playerName;
 
 }
