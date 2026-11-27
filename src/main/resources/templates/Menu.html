@@ -14,8 +14,8 @@
     <div th:replace="~{common/Navbar :: navbar('menu')}"></div>
 
     <main class="container">
-      <div th:if="${session.userData}">
-        <p>ようこそ、<span th:text="${session.userData.userName}"></span>さん！</p>
+      <div class="welcome-message">
+        <p>ようこそ、<span th:text="${playerName}">ユーザー</span>さん！</p>
       </div>
       
       <!-- ゲーム一覧 -->
