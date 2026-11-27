@@ -2,6 +2,14 @@
 
 /**
  * ステージのデータ
+ * ビット演算によって、荷物の有無と目的地の有無を表現する
+ * 
+ * === データの意味 ===
+ * 0：通路（2進数：000）
+ * 1：目的地（2進数：001）
+ * 2：荷物（2進数：010）
+ * 3：目的地＋荷物（2進数：011）
+ * 6：壁（2進数：110）
  */
 var stageData = [
   [6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6],
@@ -36,7 +44,7 @@ var positionY = 8;
  * 初期化関数
  */
 window.onload = function() {
-  graphicContext = document.getElementById("soko").getContext("2d");
+  graphicContext = document.getElementById("stageBase").getContext("2d");
   onkeydown = mykeydown;
   repaint();
 }
@@ -69,6 +77,10 @@ function moveRight(){
   });
 }
 
+/**
+ * 移動できるか、荷物を押せるかの判定を行い、
+ * 移動できる場合は主人公の座標を更新する
+ */
 function mykeydown(e) {
   var dx0 = positionX, dx1 = positionX, dy0 = positionY, dy1 = positionY;
   switch (e.keyCode) {
@@ -96,6 +108,9 @@ function mykeydown(e) {
   repaint();
 }
 
+/**
+ * 現在のデータをもとにCanvasに画面を再描画する
+ */
 function repaint() {
   graphicContext.fillStyle = "black";
   graphicContext.fillRect(0, 0, 800, 440);
