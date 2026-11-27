@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/Common.css}">
+    <link rel="stylesheet" th:href="@{/css/Login.css}">
+  </head>
+  <body>
+    <!-- ナビバー -->
+    <div th:replace="~{common/Navbar :: navbar('login')}"></div>
+    <div class="login-container">
+
+      <h2>ログイン</h2>
+
+      <!-- ログイン失敗時 -->
+      <div th:if="${param.error}" class="error">
+        メールアドレスまたはパスワードが違います。
+      </div>
+
+      <!-- ログアウト成功時 -->
+      <div th:if="${param.logout}" class="success">
+        ログアウトしました。
+      </div>
+
+      <!-- サインアップ成功時 -->
+      <div th:if="${param.signup}" class="success">
+        サインアップが完了しました。
+      </div>
+
+      <!-- ログインフォーム -->
+      <form th:action="@{/login}" method="post">
+        <div>
+          <label>メールアドレス</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="メールアドレス"
+            required
+          >
+        </div>
+        <div>
+          <label>パスワード</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="パスワード"
+            required
+          >
+        </div>
+        <button type="submit">
+          ログイン
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,26 +1,27 @@
 package com.choigames.app.controller;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.choigames.app.form.UserForm;
-
-import jakarta.servlet.http.HttpSession;
+import com.choigames.app.security.LoginPlayerDetails;
 
 @Controller
 @RequestMapping("/home")
 public class HomeController {
 
-  @GetMapping
-  public ModelAndView openGameMenu(HttpSession session) {
+  /**
+   * ホーム（ゲームメニュー）画面への遷移
+   * 
+   * @param session
+   * @return ModelAndView
+   */
+  @GetMapping("/init")
+  public ModelAndView openGameMenu(@AuthenticationPrincipal LoginPlayerDetails loginPlayerDetails) {
     ModelAndView mv = new ModelAndView();
-    UserForm userForm = new UserForm();
-    userForm.setUserName("太郎");
-
-    // HTTPセッションは後ほどログイン処理に移植する
-    session.setAttribute("userData", userForm);
+    mv.addObject("playerName", loginPlayerDetails.getPlayerName());
     mv.setViewName("Menu");
     return mv;
   }

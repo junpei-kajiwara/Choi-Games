@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+	</head>
 	<body>
 		<!-- ナビバー -->
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" th:fragment="navbar">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" th:fragment="navbar(menuType)">
 			<div class="container-fluid">
 				
 				<!-- 左側タイトル -->
@@ -25,7 +28,7 @@
 				<div class="collapse navbar-collapse" id="navbarMenu">
 					
 					<!-- 中央メニュー -->
-					<ul class="navbar-nav mx-auto">
+					<ul class="navbar-nav mx-auto" th:if="${menuType != 'login' && menuType != 'signup'}">
 						<li class="nav-item">
 							<a class="nav-link active" href="#">ホーム</a>
 						</li>
@@ -38,12 +41,39 @@
 					</ul>
 
 					<!-- 右側メニュー -->
-					<ul class="navbar-nav">
+					<!-- ログイン画面用のメニュー -->
+					<ul class="navbar-nav ms-auto" th:if="${menuType == 'login'}">
+						<li class="nav-item">
+							<form th:action="@{/signup}">
+								<button type="submit" class="nav-link border-0 bg-transparent">
+									サインアップ
+								</button>
+							</form>
+						</li>
+					</ul>
+
+					<!-- サインアップ画面用のメニュー -->
+					<ul class="navbar-nav ms-auto" th:if="${menuType == 'signup'}">
+						<li class="nav-item">
+							<form th:action="@{/login}">
+								<button type="submit" class="nav-link border-0 bg-transparent">
+									ログイン
+								</button>
+							</form>
+						</li>
+					</ul>
+
+					<!-- ログイン/サインアップ画面以外用のメニュー -->
+					<ul class="navbar-nav" th:if="${menuType != 'login' && menuType != 'signup'}">
 						<li class="nav-item">
 							<a class="nav-link" href="#">プロフィール</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">ログアウト</a>
+							<form th:action="@{/logout}" method="post">
+								<button type="submit" class="nav-link border-0 bg-transparent">
+									ログアウト
+								</button>
+							</form>
 						</li>
 					</ul>
 				</div>

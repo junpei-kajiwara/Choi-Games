@@ -16,6 +16,8 @@ public class GamesController {
   @GetMapping("/flipCards")
   public ModelAndView doflipCards(HttpSession session) {
     ModelAndView mv = new ModelAndView();
+
+    // テスト用 TODO
     UserForm userForm = (UserForm) session.getAttribute("userData");
     System.out.println(userForm.getUserName());
     mv.setViewName("FlipCards");
