@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.choigames.app.form.UserForm;
-
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -16,10 +14,6 @@ public class GamesController {
   @GetMapping("/flipCards")
   public ModelAndView doflipCards(HttpSession session) {
     ModelAndView mv = new ModelAndView();
-
-    // テスト用 TODO
-    UserForm userForm = (UserForm) session.getAttribute("userData");
-    System.out.println(userForm.getUserName());
     mv.setViewName("FlipCards");
     return mv;
   }
